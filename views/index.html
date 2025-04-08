@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO || MAHENDRAKUMAR</title>
+    <style>
+        * {
+            background-color: rgb(38, 38, 84);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        #form {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 10px;
+        }
+
+        #form>input[type="text"] {
+            width: 40vw;
+            border: 1px solid white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 20px;
+
+            &::placeholder {
+                color: white;
+            }
+        }
+
+        #form>input[type="file"] {
+            font-size: 15px;
+        }
+
+        #submit {
+            padding: 5px;
+            font-size: 20px;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.253);
+                color: black;
+            }
+        }
+
+        #projectdescription {
+            width: 40vw;
+            height: 150px;
+            font-size: 20px;
+            border: 1px solid white;
+            border-radius: 5px;
+
+            &::placeholder {
+                color: white;
+            }
+        }
+
+        #notification {
+            width: 200px;
+            height: 50px;
+            background-color: rgba(38, 255, 0, 0.618);
+            border-radius: 5px;
+            position: absolute;
+            top: 15px;
+            left: 10px;
+            transition: all 0.5s ease-in-out;
+            transform: translateX(-450px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #notification>#notification_info {
+            background-color: transparent;
+            margin: 0;
+            font-size: 17px;
+        }
+
+        #loader_wrapper {
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+            border-radius: 10px;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            animation: rotate 3s linear infinite;
+            display: none;
+        }
+
+        #loader {
+            width: 30px;
+            height: 30px;
+            border: 1px solid white;
+            border-radius: 50px;
+        }
+
+        #edit_link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #password_for_locksystem {
+            border: 2px solid white;
+            font-size: x-large;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        #Invalid_message {
+            font-size: 10px;
+            display: none;
+        }
+
+        #upload_content {
+            height: 100vh;
+            display: none;
+        }
+
+        #h1 {
+            text-align: center;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media only screen and (max-width: 640px),
+        only screen and (max-width: 900px) {
+            #form>input[type="text"] {
+                width: 94vw;
+                font-size: 15px;
+            }
+
+            #form>input[type="file"] {
+                font-size: 12px;
+            }
+
+            #submit {
+                font-size: 15px;
+            }
+
+            #projectdescription {
+                width: 94vw;
+                font-size: 15px;
+            }
+
+            #notification {
+                width: 96vw;
+                background-color: rgb(30 184 3);
+                transform: translateX(-950px);
+                z-index: 2;
+            }
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="lock_system">
+        <h1 id="lock_system_timer"></h1>
+        <form method="post" id="form_for_lock_system">
+            <input type="password" id="password_for_locksystem" required>
+        </form>
+        <h1 id="Invalid_message">Invalid Password!</h1>
+    </div>
+    <div id="upload_content">
+        <a href="./editProject" id="edit_link">EDIT</a>
+        <div id="notification">
+            <h1 id="notification_info"></h1>
+        </div>
+        <div id="loader_wrapper">
+            <div id="loader"></div>
+        </div>
+        <h1 style="z-index: 0;" id="h1">PORTFOLIO ARRAY</h1>
+        <form action="" id="form">
+            <input type="text" id="title" required placeholder="Enter the title..." />
+            <input type="text" id="weblink" required placeholder="Enter the weblink...">
+            <input type="text" id="tech" required placeholder="Enter the technologies...">
+            <input type="text" id="githublink" required placeholder="Enter the github link...">
+            <input type="text" id="lastupdate" required placeholder="Enter the last update..." maxlength="200">
+            <!-- <input type="text" id="projectdescription" required placeholder="Enter the description..."> -->
+            <textarea name="projectdescription" id="projectdescription" placeholder="Enter the description..."
+                required></textarea>
+            <label for="images-loptop">*LOPTOP</label>
+            <input type="file" name="images-loptop" id="images-loptop" multiple required>
+            <label for="videos-loptop">*TAB</label>
+            <input type="file" name="videos-loptop" id="videos-loptop" multiple required>
+            <label for="images-tab">*MOBILE</label>
+            <input type="file" name="images-tab" id="images-tab" multiple required>
+            <button type="submit" id="submit">Submit</button>
+        </form>
+    </div>
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>

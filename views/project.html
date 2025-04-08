@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit | Project</title>
+    <style>
+        * {
+            background-color: rgb(38, 38, 84);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        #edit_selects {
+            display: flex;
+            gap: 10px;
+        }
+
+        #idss_div>select {
+            border: 1px solid white;
+            border-radius: 4px;
+        }
+
+        #change_element_div>select {
+            border: 1px solid white;
+            border-radius: 4px;
+        }
+
+        #title,
+        #weblink,
+        #tech,
+        #githublink,
+        #lastupdate,
+        #projectdescription {
+            display: none;
+        }
+
+        #update,
+        #update2,
+        #update3,
+        #update4,
+        #update5,
+        #update6,
+        #upload1 {
+            display: none;
+            padding: 5px;
+            font-size: 20px;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.253);
+                color: black;
+            }
+        }
+
+        #images_edit {
+            display: none;
+            align-items: start;
+            flex-direction: column;
+            width: auto;
+        }
+
+        #images_edit2 {
+            margin-top: 10px;
+            width: 70vw;
+            justify-content: flex-start;
+            gap: 10px;
+
+        }
+
+        #images_edit>#uploadtheImg {
+            border: 1px solid white;
+            border-radius: 4px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+            border: 1px solid white;
+        }
+
+        .image-wrapper>img {
+            display: block;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .image-wrapper>input {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #images_edit>#form_image_loptop,
+        #upload1 {
+            display: none;
+            flex-direction: column;
+        }
+
+        #projectdescription {
+            height: 150px;
+        }
+
+        #editformtitle>input,
+        #editformweblink>input,
+        #editformtech>input,
+        #editformgithublink>input,
+        #editformlastupdate>input,
+        #editformprojectdescription>textarea {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 35vw;
+            border: 1px solid white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 20px;
+
+            &::placeholder {
+                color: white;
+            }
+        }
+
+        #form_image_loptop {
+            margin-top: 20px;
+            align-items: start;
+        }
+
+        #form_image_loptop>input[type="file"] {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        #notification {
+            width: 200px;
+            height: 50px;
+            background-color: rgba(38, 255, 0, 0.618);
+            border-radius: 5px;
+            position: absolute;
+            top: 15px;
+            left: 10px;
+            transition: all 0.5s ease-in-out;
+            transform: translateX(-450px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #notification>#notification_info {
+            background-color: transparent;
+            margin: 0;
+            font-size: 17px;
+        }
+
+        #loader_wrapper {
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            animation: rotate 3s linear infinite;
+            display: none;
+        }
+
+        #loader {
+            width: 30px;
+            height: 30px;
+            border: 1px solid white;
+            border-radius: 50px;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #home_link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #password_for_locksystem {
+            border: 2px solid white;
+            font-size: x-large;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        #Invalid_message {
+            font-size: 10px;
+            display: none;
+        }
+
+        #edit_content {
+            display: none;
+        }
+
+        @media only screen and (max-width: 640px),
+        only screen and (max-width: 900px) {
+
+            #update,
+            #update2,
+            #update3,
+            #update4,
+            #update5,
+            #update6,
+            #upload1 {
+                font-size: 15px;
+            }
+
+            #images_edit2 {
+                width: fit-content;
+                justify-content: center;
+
+            }
+
+            #editformtitle>input,
+            #editformweblink>input,
+            #editformtech>input,
+            #editformgithublink>input,
+            #editformlastupdate>input,
+            #editformprojectdescription>textarea {
+                width: 94vw;
+                font-size: 15px;
+            }
+
+            #notification {
+                width: 96vw;
+                background-color: rgb(30 184 3);
+                transform: translateX(-950px);
+                z-index: 2;
+            }
+        }
+
+        @media only screen and (max-width:900px) {
+            #edit_selects {
+                flex-direction: row;
+            }
+        }
+
+        @media only screen and (max-width: 640px) {
+            #edit_selects {
+                gap: 20px;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="lock_system">
+        <h1 id="lock_system_timer"></h1>
+        <form method="post" id="form_for_lock_system">
+            <input type="password" id="password_for_locksystem" required>
+        </form>
+        <h1 id="Invalid_message">Invalid Password!</h1>
+    </div>
+    <div id="edit_content">
+        <a href="./" id="home_link">HOME</a>
+        <div id="notification">
+            <h1 id="notification_info"></h1>
+        </div>
+        <div id="loader_wrapper">
+            <div id="loader"></div>
+        </div>
+        <h1 style="z-index: 0;">Edit Portfolio Array</h1>
+        <div id="edit_selects">
+            <div id="idss_div">
+                <label for="project-id">Project IDS</label>
+                <select name="project-id" id="project-id">
+                    <option id="idss" value="">Select Project ID</option>
+                </select>
+            </div>
+
+            <div id="change_element_div">
+                <label for="change_element">What will be change</label>
+                <select name="change_element" id="change_element">
+                    <option value="element">Element</option>
+                    <option value="title">title</option>
+                    <option value="githublink">github link</option>
+                    <option value="weblink">weblink</option>
+                    <option value="technologies">technologies</option>
+                    <option value="lastupdate">lastupdate</option>
+                    <option value="description">description</option>
+                    <option value="images">images</option>
+                    <option value="delete_Project">delete_Project</option>
+                </select>
+            </div>
+        </div>
+
+        <section>
+            <form action="" id="editformtitle">
+                <input type="text" name="title" id="title" required placeholder="Enter the title..." />
+                <button type="submit" id="update">Update</button>
+            </form>
+            <!-- #################################################################################3333333 -->
+            <form action="" id="editformweblink">
+                <input type="text" name="weblink" id="weblink" required placeholder="Enter the weblink...">
+                <button type="submit" id="update3">Update</button>
+            </form>
+
+            <!-- #################################################################################### -->
+            <form action="" id="editformtech">
+                <input type="text" name="tech" id="tech" required placeholder="Enter the technologies...">
+                <button type="submit" id="update4">Update</button>
+            </form>
+            <!-- #################################################################################### -->
+            <form action="" id="editformgithublink">
+                <input type="text" name="githublink" id="githublink" required placeholder="Enter the github link...">
+                <button type="submit" id="update2">Update</button>
+            </form>
+            <!-- #################################################################################### -->
+            <form action="" id="editformlastupdate">
+                <input type="text" name="lastupdate" id="lastupdate" required placeholder="Enter the last update...">
+                <button type="submit" id="update5">Update</button>
+            </form>
+
+            <!-- #################################################################################### -->
+            <form action="" id="editformprojectdescription">
+                <textarea name="projectdescription" id="projectdescription" placeholder="Enter the description..."
+                    required></textarea>
+                <button type="submit" id="update6">Update</button>
+            </form>
+        </section>
+
+        <section id="images_edit">
+            <select name="uploadtheImg" id="uploadtheImg">
+                <option value="delete">delete</option>
+                <option value="insert">insert</option>
+            </select>
+            <form action="" id="form_image_loptop">
+                <label for="images-loptop">*LOPTOP</label>
+                <input type="file" name="images-loptop" id="images-loptop" multiple>
+                <label for="videos-loptop">*TAB</label>
+                <input type="file" name="videos-loptop" id="videos-loptop" multiple>
+                <label for="images-tab">*MOBILE</label>
+                <input type="file" name="images-tab" id="images-tab" multiple>
+
+                <button type="submit" id="upload1" style="font-size: 15px;">Upload</button>
+            </form>
+            <section id="images_edit2">
+            </section>
+        </section>
+    </div>
+
+    <script type="module" src="./projects.js"></script>
+</body>
+
+</html>
