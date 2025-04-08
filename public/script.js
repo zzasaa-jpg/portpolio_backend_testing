@@ -15,7 +15,7 @@ body = document.getElementById("body");
 //---------------------------- start the timer for lock system -------------------------------
 async function stfls() {
     try {
-        let response = await fetch("http://localhost:9090/start_time_for_lock_system", {
+        let response = await fetch("/start_time_for_lock_system", {
             method: 'GET',
             headers: { "Content-Type": "application/json" }
         })
@@ -37,7 +37,7 @@ async function stfls() {
 //---------------------------- lock system timer status render -------------------------------
 async function lsts() {
     try {
-        let response = await fetch("http://localhost:9090/lock_system_timer_status", {
+        let response = await fetch("/lock_system_timer_status", {
             method: 'GET',
             headers: { "Content-Type": "application/json" }
         })
@@ -83,7 +83,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
     e.preventDefault();
     password_for_locksystem = document.getElementById("password_for_locksystem").value;
     try {
-        const response = await fetch("http://localhost:9090/locksystem", {
+        const response = await fetch("/locksystem", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ password: password_for_locksystem })
@@ -118,7 +118,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                         appendFiles("videos-loptop");
                         appendFiles("images-tab");
 
-                        const response = await fetch("http://localhost:9090/storedata", {
+                        const response = await fetch("/storedata", {
                             method: "POST",
                             body: formDta,
                         });
