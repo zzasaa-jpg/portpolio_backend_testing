@@ -14,7 +14,7 @@ body = document.getElementById("body");
 //---------------------------- start the timer for lock system -------------------------------
 async function stfls() {
     try {
-        let response = await fetch("https://portfolio-back-end-q8gv.onrender.com/start_time_for_lock_system", {
+        let response = await fetch("/start_time_for_lock_system", {
             method: 'GET',
             headers: { "Content-Type": "application/json" }
         })
@@ -36,7 +36,7 @@ async function stfls() {
 //---------------------------- lock system timer status render -------------------------------
 async function lsts() {
     try {
-        let response = await fetch("https://portfolio-back-end-q8gv.onrender.com/lock_system_timer_status", {
+        let response = await fetch("/lock_system_timer_status", {
             method: 'GET',
             headers: { "Content-Type": "application/json" }
         })
@@ -64,7 +64,7 @@ lsts();
 //---------------------------- lock system reset ---------------------------------------------
 async function reset() {//lock system reset
     try {
-        let response = await fetch("https://portfolio-back-end-q8gv.onrender.com/reset", {
+        let response = await fetch("/reset", {
             method: 'GET',
             headers: { "Content-Type": "application/json" }
         })
@@ -82,7 +82,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
     e.preventDefault();
     password_for_locksystem = document.getElementById("password_for_locksystem").value;
     try {
-        const response = await fetch("https://portfolio-back-end-q8gv.onrender.com/locksystem", {
+        const response = await fetch("/locksystem", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ password: password_for_locksystem })
@@ -105,7 +105,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                 if (value) {
                     async function a() {
                         loader9(true)
-                        const response = await fetch("https://portfolio-back-end-q8gv.onrender.com/projects");
+                        const response = await fetch("/projects");
                         let project_id = document.getElementById("project-id");
                         let change_element = document.getElementById("change_element");
                         change_element.disabled = true;
@@ -127,7 +127,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                         let project_id = document.getElementById("project-id");
                         project_id.addEventListener("change", async function () {
                             // console.log(project_id.value);
-                            const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/projects/${project_id.value}`);
+                            const response = await fetch(`/projects/${project_id.value}`);
                             console.log(response.status);
                             if (response.ok) {
                                 const results = await response.json();
@@ -150,7 +150,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                                 E.preventDefault();
                                                 loader(true);
                                                 let updateTitle = title.value;
-                                                const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/editProjects/${project_id.value}`, {
+                                                const response = await fetch(`/editProjects/${project_id.value}`, {
                                                     method: "POST",
                                                     headers: {
                                                         "Content-Type": "application/json" // Sending data as JSON
@@ -181,7 +181,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                                 E.preventDefault();
                                                 loader1(true);
                                                 let updateGithublink = githublink.value;
-                                                const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/editProjects/${project_id.value}`, {
+                                                const response = await fetch(`/editProjects/${project_id.value}`, {
                                                     method: "POST",
                                                     headers: {
                                                         "Content-Type": "application/json"
@@ -211,7 +211,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                                 E.preventDefault();
                                                 loader2(true);
                                                 let updateWeblink = weblink.value;
-                                                const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/editProjects/${project_id.value}`, {
+                                                const response = await fetch(`/editProjects/${project_id.value}`, {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
                                                     body: JSON.stringify({ weblink: updateWeblink })
@@ -239,7 +239,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                                 E.preventDefault();
                                                 loader3(true);
                                                 let updateTech = tech.value;
-                                                const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/editProjects/${project_id.value}`, {
+                                                const response = await fetch(`/editProjects/${project_id.value}`, {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
                                                     body: JSON.stringify({ technologies: updateTech })
@@ -267,7 +267,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                                 E.preventDefault();
                                                 loader4(true);
                                                 let updateLastUpdate = lastupdate.value;
-                                                const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/editProjects/${project_id.value}`, {
+                                                const response = await fetch(`/editProjects/${project_id.value}`, {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
                                                     body: JSON.stringify({ lastupdate: updateLastUpdate })
@@ -295,7 +295,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                                 E.preventDefault();
                                                 loader5(true);
                                                 let updateProjectDescription = projectdescription.value;
-                                                const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/editProjects/${project_id.value}`, {
+                                                const response = await fetch(`/editProjects/${project_id.value}`, {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
                                                     body: JSON.stringify({ description: updateProjectDescription })
@@ -340,7 +340,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                                         appendFiles("videos-loptop");
                                                         appendFiles("images-tab");
 
-                                                        const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/insertIMG/${id}`, {
+                                                        const response = await fetch(`/insertIMG/${id}`, {
                                                             method: "POST",
                                                             body: formData,
                                                         })
@@ -386,7 +386,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                                             let id = results.data._id;
                                                             loader7(true);
                                                             console.log(el.fieldname, el.originalname, results.data._id);
-                                                            const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/deleteIMG/${id}`, {
+                                                            const response = await fetch(`/deleteIMG/${id}`, {
                                                                 method: "DELETE",
                                                                 headers: { "Content-Type": "application/json" },
                                                                 body: JSON.stringify({ fieldname: el.fieldname, originalname: el.originalname })
@@ -419,7 +419,7 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                                             loader8(true);
                                             console.log(id)
                                             try {
-                                                const response = await fetch(`https://portfolio-back-end-q8gv.onrender.com/delProject/${id}`, {
+                                                const response = await fetch(`/delProject/${id}`, {
                                                     method: "DELETE",
                                                     headers: { "Content-Type": "application/json" },
                                                 });
