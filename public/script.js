@@ -65,7 +65,7 @@ lsts();
 //---------------------------- lock system reset ---------------------------------------------
 async function reset() {//lock system reset
     try {
-        let response = await fetch("http://localhost:9090/reset", {
+        let response = await fetch("/reset", {
             method: 'GET',
             headers: { "Content-Type": "application/json" }
         })
