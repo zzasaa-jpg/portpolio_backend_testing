@@ -79,9 +79,9 @@
             border-radius: 5px;
             position: absolute;
             top: 15px;
-            left: 10px;
+            left: 0;
             transition: all 0.5s ease-in-out;
-            transform: translateX(-450px);
+            transform: translateX(-150vw);
             justify-content: center;
             align-items: center;
         }
@@ -169,9 +169,9 @@
             }
 
             #notification {
-                width: 96vw;
+                width: -webkit-fill-available;
                 background-color: rgb(30 184 3);
-                transform: translateX(-950px);
+                transform: translateX(-150vw);
                 z-index: 2;
             }
         }
@@ -201,15 +201,14 @@
             <input type="text" id="tech" required placeholder="Enter the technologies...">
             <input type="text" id="githublink" required placeholder="Enter the github link...">
             <input type="text" id="lastupdate" required placeholder="Enter the last update..." maxlength="200">
-            <!-- <input type="text" id="projectdescription" required placeholder="Enter the description..."> -->
             <textarea name="projectdescription" id="projectdescription" placeholder="Enter the description..."
                 required></textarea>
             <label for="images-loptop">*LOPTOP</label>
             <input type="file" name="images-loptop" id="images-loptop" multiple required>
-            <label for="videos-loptop">*TAB</label>
-            <input type="file" name="videos-loptop" id="videos-loptop" multiple required>
-            <label for="images-tab">*MOBILE</label>
+            <label for="images-tab">*TAB</label>
             <input type="file" name="images-tab" id="images-tab" multiple required>
+            <label for="images-mobile">*MOBILE</label>
+            <input type="file" name="images-mobile" id="images-mobile" multiple required>
             <button type="submit" id="submit">Submit</button>
         </form>
     </div>

@@ -103,8 +103,8 @@ app.get("/", (req, res) => {
 
 app.post("/storedata", upload.fields([
     { name: "images-loptop", maxCount: 10 },
-    { name: "videos-loptop", maxCount: 10 },
     { name: "images-tab", maxCount: 10 },
+    { name: "images-mobile", maxCount: 10 },
 ]), async (req, res) => {
     try {
         const a = { title, weblink, technologies, github, lastupdate, description } = req.body;
@@ -195,8 +195,8 @@ app.delete("/deleteIMG/:id", async (req, res) => {
 
 app.post("/insertIMG/:id", upload.fields([
     { name: "images-loptop", maxCount: 10 },
-    { name: "videos-loptop", maxCount: 10 },
-    { name: "images-tab", maxCount: 10 }]), async (req, res) => {
+    { name: "images-tab", maxCount: 10 },
+    { name: "images-mobile", maxCount: 10 }]), async (req, res) => {
         const id = req.params.id;
         const newFiles = req.files;
         try {

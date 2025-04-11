@@ -1,6 +1,5 @@
 //-----------------------------------lock system-------------------------------------
-import { copy } from "./copy.js";
-copy();
+import { copy } from "./copy.js"; copy();
 let body, value, upload_content, lock_system_timer, lock_system, form_for_lock_system, password_for_locksystem;
 value = false;
 lock_system = document.querySelector(".lock_system");
@@ -104,6 +103,9 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                 if (value) {
                     document.getElementById("form").addEventListener("submit", sendData);
                     async function sendData(E) {
+                        [document.getElementById("title"), document.getElementById("weblink"), document.getElementById("tech"), document.getElementById("githublink"), document.getElementById("lastupdate"), document.getElementById("projectdescription"), document.getElementById("images-loptop"), document.getElementById("images-tab"), document.getElementById("images-mobile"), document.getElementById("submit")].forEach(element => {
+                            element.disabled = true;
+                        })
                         E.preventDefault();
                         loader(true);
                         const formDta = new FormData();
@@ -115,8 +117,8 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                         formDta.append("description", document.getElementById("projectdescription").value);
 
                         appendFiles("images-loptop");
-                        appendFiles("videos-loptop");
                         appendFiles("images-tab");
+                        appendFiles("images-mobile");
 
                         const response = await fetch("/storedata", {
                             method: "POST",
@@ -148,11 +150,11 @@ form_for_lock_system.addEventListener("submit", async (e) => {
                         notification.style.transitionDuration = "0.3s";
                         notification.style.transform = "translateX(0px)";
                         notification.style.top = "15px";
-                        notification.style.left = "10px";
+                        notification.style.left = "0px";
                         notification_info.innerText = message;
                         notification.style.zIndex = "4";
                         setTimeout(() => {
-                            notification.style.transform = "translateX(-450px)";
+                            notification.style.transform = "translateX(-150vw)";
                         }, 2000)
                     }
 

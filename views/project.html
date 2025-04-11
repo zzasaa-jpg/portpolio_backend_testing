@@ -151,9 +151,9 @@
             border-radius: 5px;
             position: absolute;
             top: 15px;
-            left: 10px;
+            left: 0;
             transition: all 0.5s ease-in-out;
-            transform: translateX(-450px);
+            transform: translateX(-150vw);
             justify-content: center;
             align-items: center;
         }
@@ -244,9 +244,9 @@
             }
 
             #notification {
-                width: 96vw;
+                width: -webkit-fill-available;
                 background-color: rgb(30 184 3);
-                transform: translateX(-950px);
+                transform: translateX(-150vw);
                 z-index: 2;
             }
         }
@@ -312,29 +312,27 @@
                 <input type="text" name="title" id="title" required placeholder="Enter the title..." />
                 <button type="submit" id="update">Update</button>
             </form>
-            <!-- #################################################################################3333333 -->
+            <!-------------------------------------------------------------------------------------------->
             <form action="" id="editformweblink">
                 <input type="text" name="weblink" id="weblink" required placeholder="Enter the weblink...">
                 <button type="submit" id="update3">Update</button>
             </form>
-
-            <!-- #################################################################################### -->
+            <!------------------------------------------------------------------------------------------->
             <form action="" id="editformtech">
                 <input type="text" name="tech" id="tech" required placeholder="Enter the technologies...">
                 <button type="submit" id="update4">Update</button>
             </form>
-            <!-- #################################################################################### -->
+            <!------------------------------------------------------------------------------------------->
             <form action="" id="editformgithublink">
                 <input type="text" name="githublink" id="githublink" required placeholder="Enter the github link...">
                 <button type="submit" id="update2">Update</button>
             </form>
-            <!-- #################################################################################### -->
+            <!------------------------------------------------------------------------------------------->
             <form action="" id="editformlastupdate">
                 <input type="text" name="lastupdate" id="lastupdate" required placeholder="Enter the last update...">
                 <button type="submit" id="update5">Update</button>
             </form>
-
-            <!-- #################################################################################### -->
+            <!------------------------------------------------------------------------------------------->
             <form action="" id="editformprojectdescription">
                 <textarea name="projectdescription" id="projectdescription" placeholder="Enter the description..."
                     required></textarea>
